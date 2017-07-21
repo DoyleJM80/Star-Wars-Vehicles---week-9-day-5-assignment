@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../styles/App.css';
 import Form from './form.js';
+import Header from './header.js';
 
 class App extends Component {
   // PROPS AND STATE
@@ -10,12 +11,38 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
       vehicles: [],
-      value: ''
+      value: '',
+      pilot: ''
     };
   }
-
+  // FORM: HANDLE INPUT CHANGES
+  // handleNameChange below:
+  // See form lesson for details.
+  // Enter your code below:
+  handleNameChange(event) {
+    this.setState({
+      pilot: event.target.value
+    });
+  }
+  //  FORM: SUBMIT METHOD
+  // handleSubmit below:
+  // See form lesson for details.
+  // Once the form is sumbited, two things need to happen: set the state of pilot to the input value.
+  // Then, set the value of the input back to an empty string.
+  // Enter your code below:
+  handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://swapi.co/api/vehicles/').then((result) => {
+      result.json().then((response) => {
+        this.setState({vehicles: response.results});
+      });
+    });
+  }
   // LIFECYCLE
   // Which lifecycle is best for fetching data?
   // Inside this lifecycle, you will fetch the vehicles from here: https://swapi.co/api/vehicles/
@@ -32,8 +59,10 @@ class App extends Component {
   // You will need the following values: name, model, manufacturer, class, passengers, crew, length, max speed, and cargo capacity.
   // Rendering: create a 'card' for each of the vehicles. consult the Bootstrap 4 docs for details.
   // Enter your code below:
+  
 
   render() {
+
     /*
     Store vehicles state in a variable.
     Map over this variable to access the values needed to render.
@@ -44,9 +73,12 @@ class App extends Component {
         The App component needs the following:
          jumbotron section, form section, vehicle cards section.
          Your form will also need a header in which you will pass the state of the form upon submit.
-         */
-         <Form />
-       }
+         */}
+         <Header />
+         <Form onSubmit={this.handleSubmit}/>
+
+
+       {console.log(this.state.vehicles)}
       </div>
     );
   }
