@@ -1,28 +1,20 @@
 import React, {Component} from 'react';
 import '../styles/App.css';
+import Form from './form.js';
 
 class App extends Component {
   // PROPS AND STATE
   // Set props and state below.
   // You should set state for vehicles (empty array), value (empty string), pilot (empty) string.
   // Enter your code below:
+  constructor(props) {
+    super(props);
 
-
-
-  // FORM: HANDLE INPUT CHANGES
-  // handleNameChange below:
-  // See form lesson for details.
-  // Enter your code below:
-
-
-
-  //  FORM: SUBMIT METHOD
-  // handleSubmit below:
-  // See form lesson for details.
-  // Once the form is sumbited, two things need to happen: set the state of pilot to the input value.
-  // Then, set the value of the input back to an empty string.
-  // Enter your code below:
-
+    this.state = {
+      vehicles: [],
+      value: ''
+    };
+  }
 
   // LIFECYCLE
   // Which lifecycle is best for fetching data?
@@ -52,10 +44,12 @@ class App extends Component {
         The App component needs the following:
          jumbotron section, form section, vehicle cards section.
          Your form will also need a header in which you will pass the state of the form upon submit.
-         */}
+         */
+         <Form />
+       }
       </div>
     );
-  }  
+  }
 }
 
 export default App;
