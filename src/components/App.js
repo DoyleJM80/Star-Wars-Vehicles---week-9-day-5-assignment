@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../styles/App.css';
 import Form from './form.js';
 import Header from './header.js';
+import Cards from './cards.js';
 
 class App extends Component {
   // PROPS AND STATE
@@ -59,7 +60,7 @@ class App extends Component {
   // You will need the following values: name, model, manufacturer, class, passengers, crew, length, max speed, and cargo capacity.
   // Rendering: create a 'card' for each of the vehicles. consult the Bootstrap 4 docs for details.
   // Enter your code below:
-  
+
 
   render() {
 
@@ -76,6 +77,7 @@ class App extends Component {
          */}
          <Header />
          <Form onSubmit={this.handleSubmit}/>
+      
 
 
        {console.log(this.state.vehicles)}
