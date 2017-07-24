@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 
 export default class Cards extends Component {
-  constructor(props) {
-    super(props);
 
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = {
-      vehicles: []
-    };
-  }
+  
 
   render() {
     let ships = this.state.vehicles.map((result) => {
