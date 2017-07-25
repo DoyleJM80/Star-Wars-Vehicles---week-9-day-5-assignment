@@ -4,36 +4,34 @@ export default class Form extends Component {
   constructor() {
     super();
 
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      input: '',
       pilot: ''
     }
   }
 
-  handleNameChange(event) {
-    this.setState({
-      input: event.target.value
-    });
+  handleInput(event) {
+    this.props.handleInput(event.target.value);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('i clicked a button');
-    this.setState({
-      pilot: this.state.input
-    })
+    this.props.handleSubmit(this.props.value);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    nextProps.pilot !== this.state.pilot ? this.setState({ pilot: nextProps.pilot }) : undefined;
   }
 
   render() {
     return (
-        <form onSubmit={this.props.onSubmit}>
-          What is your name, pilot?
-          <input type="text" value={this.state.input}/>
-          <input type="submit"/>
-          <p>{this.state.pilot}</p>
+        <form className="jumbotron form">
+          <h3>What is your name, pilot?</h3>
+          <input type="text" value={this.props.value} onChange={this.handleInput}/>
+          <input type="submit" onClick={this.handleSubmit}/>
+          <h1>{this.state.pilot}</h1>
           </form>
     );
   }

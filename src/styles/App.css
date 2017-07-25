@@ -8,4 +8,9 @@
 
 .form{
   text-align: center;
+  margin: 10px auto;
+}
+
+.banner {
+  margin: 0 auto;
 }
