@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 export default class Cards extends Component {
   constructor() {
     super();
+
   }
   render() {
     let vehicle = this.props.vehicle;
+    console.log('vehicle', vehicle);
       return(
         <div className="col-sm-4">
           <div className="card">
@@ -14,12 +16,10 @@ export default class Cards extends Component {
             <h4>Specs</h4>
               <ul>
                 <li>Manufacturer: {vehicle.manufacturer}</li>
-                <li>Class: {vehicle.class}</li>
+                <li>Cost in Credits: {vehicle.cost_in_credits}</li>
                 <li>Passengers: {vehicle.passengers}</li>
                 <li>Crew: {vehicle.crew}</li>
                 <li>Length: {vehicle.length}</li>
-                <li>Max Speed: {vehicle.speed}</li>
-                <li>Cargo Capacity: {vehicle.cargo}</li>
               </ul>
           </div>
         </div>
